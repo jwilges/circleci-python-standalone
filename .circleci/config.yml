@@ -1,0 +1,36 @@
+# Python CircleCI 2.0 configuration file
+# See: https://circleci.com/docs/2.0/language-python/
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.6
+
+    working_directory: ~/project
+
+    steps:
+      - checkout
+
+      - run:
+          name: bootstrap workspace
+          command: |
+            python3 -m venv .venv
+            . .venv/bin/activate
+            pip install -r requirements.txt
+            pip install .
+            mkdir .test-reports
+
+      - run:
+          name: unit tests
+          environment:
+            PYTHONPATH=~/project
+          command: |
+            . .venv/bin/activate
+            pytest . --junitxml=~/project/.test-reports/unittests.xml
+
+      - store_test_results:
+          path: ~/project/.test-reports
+
+      - store_artifacts:
+          path: ~/project/.test-reports
+          destination: test-reports
