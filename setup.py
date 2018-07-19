@@ -1,4 +1,5 @@
-import simple
+import setuptools
+import foo
 
 setuptools.setup(
     name="foo",
