@@ -1,0 +1,21 @@
+{
+    "files.exclude": {
+        "**/.vscode": true,
+        "**/.git": true,
+        "**/__pycache__": true,
+        "**/.pytest_cache": true,
+        ".venv": true,
+        "build": true,
+        "dist": true,
+        "*.egg-info": true
+    },
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.unitTest.unittestEnabled": false,
+    "python.unitTest.nosetestsEnabled": false,
+    "python.unitTest.pyTestEnabled": true,
+    "python.unitTest.pyTestArgs": [
+        "."
+    ],
+    "python.pythonPath": "${workspaceFolder}/.venv"
+}
